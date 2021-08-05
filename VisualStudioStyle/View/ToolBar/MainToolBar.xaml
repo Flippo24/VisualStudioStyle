@@ -1,0 +1,184 @@
+﻿<UserControl x:Class="AgentIDE.MainToolBar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="11"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <Grid>
+        <ToolBarTray Background="{x:Null}">
+            <ToolBar ClipToBounds="False" Background="{x:Null}" VerticalAlignment="Center">
+                <Menu Background="{x:Null}">
+                    <MenuItem>
+                        <MenuItem.Header>
+                            <StackPanel>
+                                <md:PackIcon Foreground="{DynamicResource MaterialDesignBody}" Kind="CursorDefault" Width="15" Height="15"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem>
+                        <MenuItem.Header>
+                            <StackPanel>
+                                <md:PackIcon Foreground="{DynamicResource MaterialDesignBody}" Kind="BorderTopVariant" Width="15" Height="15"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                </Menu>
+                <Separator Margin="5,0">
+                    <Separator.LayoutTransform>
+                        <RotateTransform Angle="90" />
+                    </Separator.LayoutTransform>
+                </Separator>
+                <Menu Background="{x:Null}">
+                    <MenuItem>
+                        <MenuItem.Header>
+                            <StackPanel>
+                                <md:PackIcon Foreground="{DynamicResource MaterialDesignBody}" Kind="FormatLineStyle" Width="15" Height="15"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem>
+                        <MenuItem.Header>
+                            <StackPanel>
+                                <md:PackIcon Foreground="{DynamicResource MaterialDesignBody}" Kind="FormatLineSpacing" Width="15" Height="15"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                </Menu>
+                <Separator Margin="5,0">
+                    <Separator.LayoutTransform>
+                        <RotateTransform Angle="90" />
+                    </Separator.LayoutTransform>
+                </Separator>
+                <Menu Background="{x:Null}">
+                    <MenuItem>
+                        <MenuItem.Header>
+                            <StackPanel>
+                                <md:PackIcon Foreground="{DynamicResource MaterialDesignBody}" Kind="Bookmark" Width="15" Height="15"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem IsEnabled="False">
+                        <MenuItem.Header>
+                            <StackPanel>
+                                <md:PackIcon Foreground="{DynamicResource MaterialDesignBody}" Kind="BookmarkPlus" Width="15" Height="15"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem IsEnabled="False">
+                        <MenuItem.Header>
+                            <StackPanel>
+                                <md:PackIcon Foreground="{DynamicResource MaterialDesignBody}" Kind="BookmarkMinus" Width="15" Height="15"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem IsEnabled="False">
+                        <MenuItem.Header>
+                            <StackPanel>
+                                <md:PackIcon Foreground="{DynamicResource MaterialDesignBody}" Kind="BookmarkRemove" Width="15" Height="15"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                </Menu>
+            </ToolBar>
+            <ToolBar ClipToBounds="False" Background="{x:Null}" VerticalAlignment="Center">
+                <Menu Background="{x:Null}">
+                    <MenuItem>
+                        <MenuItem.Header>
+                            <StackPanel>
+                                <md:PackIcon Foreground="#7ac1ff" Kind="ArrowLeftBoldCircle" Width="15" Height="15"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem>
+                        <MenuItem.Header>
+                            <StackPanel>
+                                <md:PackIcon Foreground="#7ac1ff" Kind="ArrowRightBoldCircle" Width="15" Height="15"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                </Menu>
+                <Separator Margin="5,0">
+                    <Separator.LayoutTransform>
+                        <RotateTransform Angle="90" />
+                    </Separator.LayoutTransform>
+                </Separator>
+                <Menu Background="{x:Null}">
+                    <MenuItem>
+                        <MenuItem.Header>
+                            <StackPanel>
+                                <md:PackIcon Foreground="{DynamicResource MaterialDesignBody}" Kind="FileMultiple" Width="15" Height="15"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem >
+                        <MenuItem.Header>
+                            <StackPanel>
+                                <md:PackIcon Foreground="#cf9e52" Kind="FolderMove" Width="15" Height="15"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem >
+                        <MenuItem.Header>
+                            <StackPanel>
+                                <md:PackIcon Foreground="#7ac1ff" Kind="ContentSave" Width="15" Height="15"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem >
+                        <MenuItem.Header>
+                            <StackPanel>
+                                <md:PackIcon Foreground="#7ac1ff" Kind="ContentSaveAll" Width="15" Height="15"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                </Menu>
+                <Separator Margin="5,0">
+                    <Separator.LayoutTransform>
+                        <RotateTransform Angle="90" />
+                    </Separator.LayoutTransform>
+                </Separator>
+                <Menu Background="{x:Null}">
+                    <MenuItem>
+                        <MenuItem.Header>
+                            <StackPanel>
+                                <md:PackIcon Foreground="#7ac1ff" Kind="ArrowCollapseLeft" Width="15" Height="15"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem>
+                        <MenuItem.Header>
+                            <StackPanel>
+                                <md:PackIcon Foreground="#7ac1ff" Kind="ArrowCollapseRight" Width="15" Height="15"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                </Menu>
+                <ComboBox BorderThickness="1" Width="60">
+                    <ComboBoxItem IsSelected="True">Debug</ComboBoxItem>
+                    <ComboBoxItem>Release</ComboBoxItem>
+                </ComboBox>
+                <ComboBox BorderThickness="1" Width="100">
+                    <ComboBoxItem IsSelected="True">Any CPU</ComboBoxItem>
+                    <ComboBoxItem>Configuration Manager</ComboBoxItem>
+                </ComboBox>
+                <Menu Background="{x:Null}">
+                    <MenuItem>
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <md:PackIcon Foreground="#8dd28a" Kind="Play" Width="20" Height="20"/>
+                                <TextBlock Foreground="{DynamicResource MaterialDesignBody}" VerticalAlignment="Center" FontSize="11">Start</TextBlock>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                </Menu>
+            </ToolBar>
+        </ToolBarTray>
+    </Grid>
+</UserControl>

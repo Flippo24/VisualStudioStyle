@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="AgentIDE.MenuFile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="11"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <Grid>
+        <Button x:Name="File" Style="{StaticResource WindowButtonStyle}" HorizontalAlignment="Left" Height="20" Content="File">
+            <Button.ContextMenu>
+                <ContextMenu Margin="-15" x:Name="_FileMenu" PlacementRectangle="{Binding RelativeSource={RelativeSource Self}}">
+                    <MenuItem Height="25" Header="New">
+                    </MenuItem>
+                    <MenuItem Height="25" Header="Open" />
+                    <MenuItem Height="25">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <md:PackIcon Kind="SourceRepository" Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Label>Clone Repository</Label>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Height="25">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <md:PackIcon Kind="DockWindow" Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Label>Start Window</Label>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Height="25" Header="Add" />
+                    <Separator/>
+                    <MenuItem Height="25" Header="Close" />
+                    <MenuItem Height="25">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <md:PackIcon Kind="CloseBoxMultiple" Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Label>Close Solution</Label>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Height="25" Header="Start Live Share Session" />
+                    <MenuItem Height="25" Header="Join Live Share Session..." />
+                    <Separator/>
+                    <MenuItem Height="25">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <md:PackIcon Kind="ContentSave" Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Label>Save</Label>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Height="25" Header="Save as..." />
+                    <MenuItem Height="25">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <md:PackIcon Kind="ContentSaveAll" Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Label>Save All</Label>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Height="25">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <md:PackIcon Kind="FileDocument" Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Label>Page Setup...</Label>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Height="25">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <md:PackIcon Kind="Printer" Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Label>Print</Label>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Height="25" Header="Account Settings..." />
+                    <Separator/>
+                    <MenuItem Height="25" Header="Recent Files" />
+                    <MenuItem Height="25" Header="Recent Project and Solutions" />
+                    <Separator/>
+                    <MenuItem Height="25" Header="Exit" />
+                </ContextMenu>
+            </Button.ContextMenu>
+            <Button.Triggers>
+                <EventTrigger SourceName="File" RoutedEvent="Button.Click">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="_FileMenu" Storyboard.TargetProperty="(ContextMenu.IsOpen)">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <sys:Boolean>True</sys:Boolean>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
+    </Grid>
+</UserControl>

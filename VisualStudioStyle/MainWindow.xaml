@@ -1,0 +1,184 @@
+﻿<mde:MaterialWindow x:Class="AgentIDE.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:AgentIDE"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mde="https://spiegelp.github.io/MaterialDesignExtensions/winfx/xaml"
+        xmlns:avalonDock="https://github.com/Dirkster99/AvalonDock"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="11"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="{materialDesign:MaterialDesignFont}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="RobotEasy 2.0" Height="777.165" Width="1348.268" Initialized="MaterialWindow_Initialized" Closed="MaterialWindow_Closed">
+
+    <mde:MaterialWindow.TitleTemplate>
+        <DataTemplate>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <materialDesign:Chip HorizontalAlignment="Right">
+                    <materialDesign:Chip.Icon>
+                        <Image Source="Capturar.PNG" />
+                    </materialDesign:Chip.Icon>
+                </materialDesign:Chip>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <md:PackIcon Foreground="{DynamicResource MaterialDesignBody}" Style="{StaticResource WindowButtonIconStyle}" Kind="MicrosoftVisualStudio" VerticalAlignment="Center"/>
+                    <local:MenuFile/>
+                    <local:MenuEdit/>
+                    <local:MenuView/>
+                    <local:MenuGit/>
+                    <local:Project/>
+                    <local:MenuBuild/>
+                    <local:MenuDebug/>
+                    <local:MenuTest/>
+                    <local:MenuAnalyze/>
+                    <local:MenuTools/>
+                    <local:MenuExtensions/>
+                    <local:MenuWindow/>
+                    <local:MenuHelp/>
+                    <ui:AutoSuggestBox
+                        x:Name="controlsSearchBox"
+                        DockPanel.Dock="Top"
+                        PlaceholderText="Search"
+                        QueryIcon="Find" Width="250"/>
+                    <TextBlock Margin="15,0" VerticalAlignment="Center">Nome do projeto</TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Stretch">
+                    <Border Width="1" VerticalAlignment="Stretch" SnapsToDevicePixels="True" Margin="8,4,8,4"
+                            Background="{Binding Path=BorderForegroundBrush, RelativeSource={RelativeSource AncestorType={x:Type mde:MaterialWindow}}}" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </mde:MaterialWindow.TitleTemplate>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="58"/>
+            <RowDefinition Height="665*"/>
+            <RowDefinition Height="23*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="GridToolBar" Background="#2d2d30">
+            <local:MainToolBar/>
+            <ToggleButton IsChecked="True" x:Name="ToggleDarkMode" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="Default ToggleButton Style" Click="ToggleDarkMode_Click" />
+        </Grid>
+        <DockingManager x:Name="dockManager"
+            AllowMixedOrientation="True"
+            AutoWindowSizeWhenOpened="True"
+            IsVirtualizingAnchorable="True"
+            IsVirtualizingDocument="True" Grid.Row="1" Grid.RowSpan="1">
+            <DockingManager.Theme>
+                <Vs2013LightTheme />
+            </DockingManager.Theme>
+            <DockingManager.DocumentHeaderTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Margin="0,0,4,0" Source="{Binding IconSource}" />
+                        <TextBlock Text="{Binding Title}" TextTrimming="CharacterEllipsis" />
+                    </StackPanel>
+                </DataTemplate>
+            </DockingManager.DocumentHeaderTemplate>
+            <LayoutRoot>
+                <LayoutPanel Orientation="Horizontal">
+                    <LayoutAnchorablePane DockWidth="200">
+                        <LayoutAnchorable x:Name="SolutionExplorer"
+                            Title="Solution Explorer"
+                            CanClose="False"
+                            CanHide="False"
+                            ContentId="SolutionExplorer"
+                            ToolTip="Solution Explorer">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="44"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid>
+                                    <local:ToolBarSolutionExplorer></local:ToolBarSolutionExplorer>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <TreeView>
+                                        <TreeViewItem>
+                                            <TreeViewItem.Header>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <md:PackIcon Foreground="{DynamicResource MaterialDesignBody}" Kind="LanguageCsharp" Width="15" Height="15"/>
+                                                    <TextBlock VerticalAlignment="Center">Projeto</TextBlock>
+                                                </StackPanel>
+                                            </TreeViewItem.Header>
+                                            <TreeViewItem>
+                                                <TreeViewItem.Header>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <md:PackIcon Foreground="{DynamicResource MaterialDesignBody}" Kind="Tools" Width="15" Height="15"/>
+                                                        <TextBlock VerticalAlignment="Center">Properties</TextBlock>
+                                                    </StackPanel>
+                                                </TreeViewItem.Header>
+                                            </TreeViewItem>
+                                            <TreeViewItem>
+                                                <TreeViewItem.Header>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <md:PackIcon Foreground="{DynamicResource MaterialDesignBody}" Kind="Sitemap" Width="15" Height="15"/>
+                                                        <TextBlock VerticalAlignment="Center">References</TextBlock>
+                                                    </StackPanel>
+                                                </TreeViewItem.Header>
+                                            </TreeViewItem>
+                                        </TreeViewItem>
+                                    </TreeView>
+                                </Grid>
+                            </Grid>
+                        </LayoutAnchorable>
+                        <LayoutAnchorable x:Name="GitChanges"
+                            Title="Git Changes"
+                            CanClose="False"
+                            CanHide="False"
+                            ContentId="GitChanges"
+                            ToolTip="Git Changes">
+                        </LayoutAnchorable>
+                    </LayoutAnchorablePane>
+                    <LayoutDocumentPaneGroup>
+                        <LayoutDocumentPane x:Name="LayoutDocumentPane">
+                            <LayoutDocument  Title="Documetn 1" ContentId="main">
+                                <Grid x:Name="ViewBrowser" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.Column="1">
+                                    
+                                </Grid>
+                            </LayoutDocument>
+                            <LayoutDocument Title="Document 2" ContentId="document2">
+                            </LayoutDocument>
+                        </LayoutDocumentPane>
+                    </LayoutDocumentPaneGroup>
+                    <LayoutAnchorablePaneGroup DockWidth="150">
+                        <LayoutAnchorablePane>
+                            <LayoutAnchorable
+                                Title="Error List"
+                                CanClose="False"
+                                ContentId="ErrorList">
+
+                            </LayoutAnchorable>
+                            <LayoutAnchorable x:Name="Output" Title="Output"
+                                CanClose="False"
+                                ContentId="Output">
+                                <DataGrid FontSize="11" Name="dataGridClientes" AutoGenerateColumns="False" IsReadOnly="True">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding Nome}" Header="Type"/>
+                                        <DataGridTextColumn Binding="{Binding Telefone}" Header="Name"/>
+                                        <DataGridTextColumn Binding="{Binding Email}" Header="Value"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </LayoutAnchorable>
+                        </LayoutAnchorablePane>
+                    </LayoutAnchorablePaneGroup>
+                </LayoutPanel>
+            </LayoutRoot>
+        </DockingManager>
+        <Grid Grid.Row="2" Background="#FF008BFF">
+            <TextBlock VerticalAlignment="Center" Margin="10,5,0,5">Ready</TextBlock>
+        </Grid>
+    </Grid>
+</mde:MaterialWindow>
