@@ -10,7 +10,7 @@ Light
 
 https://user-images.githubusercontent.com/84336182/128362898-30a16311-a200-4ddb-b3c1-f4ea1260fb82.mp4
 
-# Used projects
+# Projects used
 [AvalonDock](https://github.com/Dirkster99/AvalonDock)
 
 [MaterialDesignXaml](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
